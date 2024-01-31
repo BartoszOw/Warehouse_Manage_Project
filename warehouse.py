@@ -33,18 +33,22 @@ def get_items():
     
 
 def add_items():
+
     print("Adding to warehouse...")
+
     name = input("Item Name: ")
     quantity = input("Item quantity: ")
     unit_name = input("Item unit of measure: Eg, l, kg : pcs: ")
     unit_price = input("Item price in PLN: ")
 
-    items.append(
-        {
+    x = items.append(
+    {
         'name': name,
         'quantity': quantity,
         'unit': unit_name,
         'unit_price': unit_price
     })
     print("Successfully added to warehouse. Current Status:")
-    return get_items()
+    get_items()
+    
+    
