@@ -31,3 +31,20 @@ def get_items():
     for i in list(items):
         print(f"{i.get('name')}\t{i.get('quantity')}\t\t{i.get('unit')}\t{i.get('unit_price')}")
     
+
+def add_items():
+    print("Adding to warehouse...")
+    name = input("Item Name: ")
+    quantity = input("Item quantity: ")
+    unit_name = input("Item unit of measure: Eg, l, kg : pcs: ")
+    unit_price = input("Item price in PLN: ")
+
+    items.append(
+        {
+        'name': name,
+        'quantity': quantity,
+        'unit': unit_name,
+        'unit_price': unit_price
+    })
+    print("Successfully added to warehouse. Current Status:")
+    return get_items()

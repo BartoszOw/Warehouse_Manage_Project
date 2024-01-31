@@ -1,4 +1,4 @@
-from warehouse import get_items
+from warehouse import get_items, add_items
 
 def what_to_do():
     question = input("What would u like to do? ")
@@ -7,3 +7,5 @@ def what_to_do():
         print("Exiting... Bye!")
     if question == "show":
         return get_items()
+    if question == "add":
+        return add_items()
