@@ -23,6 +23,7 @@ items = [{
     'unit_price': 10
 }]
 
+# Wyswietlanie towaru
 
 def get_items():
     print("Name\tQuantity\tUnit\tUnit Price (PLN)")
@@ -32,6 +33,8 @@ def get_items():
         print(f"{i.get('name')}\t{i.get('quantity')}\t\t{i.get('unit')}\t{i.get('unit_price')}")
     
 
+# Dodawanie Towaru
+        
 def add_items():
 
     print("Adding to warehouse...")
@@ -41,7 +44,7 @@ def add_items():
     unit_name = input("Item unit of measure: Eg, l, kg : pcs: ")
     unit_price = input("Item price in PLN: ")
 
-    x = items.append(
+    items.append(
     {
         'name': name,
         'quantity': quantity,
@@ -51,4 +54,19 @@ def add_items():
     print("Successfully added to warehouse. Current Status:")
     get_items()
     
+# Sprzedaż towaru
+
+def sell_items():
+    
+    name = input("Item Name: ")
+    quantity = input("Quantity to sell: ")
+
+    for i in list(items):
+        if i['name'] == name:
+            i['quantity'] -= int(quantity)
+            if i['quantity'] == 0:
+                items.remove(i)
+            print(f"Successfully sold {quantity}{i['unit']} of {i['name']}")
+
+    get_items()
     
