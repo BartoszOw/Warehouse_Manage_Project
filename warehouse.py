@@ -1,3 +1,6 @@
+
+# Poczatkowa lista towaru
+
 items = [{
     'name': 'Bułka',
     'quantity': 5000,
@@ -22,6 +25,12 @@ items = [{
     'unit': 'kg',
     'unit_price': 10
 }]
+
+# Sprzedane towary(lista)
+
+sold_items = []
+
+
 
 # Wyswietlanie towaru
 
@@ -67,6 +76,11 @@ def sell_items():
             if i['quantity'] == 0:
                 items.remove(i)
             print(f"Successfully sold {quantity}{i['unit']} of {i['name']}")
-
+            sold_items.append({
+                'name': name,
+                'quantity': quantity,
+                'unit': i['unit'],
+                'unit_price': i['unit_price']
+            })
     get_items()
-    
+    print(sold_items)
