@@ -89,14 +89,15 @@ def sell_items():
     
 def get_costs():
 
-    list_of_quantity = [i['quantity'] * int(i['unit_price']) for i in list(items) ]
-    return sum(list_of_quantity)
+    costs_of_quantity = [i['quantity'] * int(i['unit_price']) for i in list(items) ]
+    return sum(costs_of_quantity)
 
 def get_income():
 
-    list_of_quantity = [int(i['quantity']) * int(i['unit_price']) for i in list(sold_items) ]
-    return sum(list_of_quantity)
+    income_of_quantity = [int(i['quantity']) * int(i['unit_price']) for i in list(sold_items) ]
+    return sum(income_of_quantity)
 
+# Pokazywanie kosztów
 
 def show_revenue():
     print("Revenue breakdown (PLN)")
