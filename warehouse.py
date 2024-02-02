@@ -77,7 +77,7 @@ def sell_items():
             print(f"Successfully sold {quantity}{i['unit']} of {i['name']}")
             sold_items.append({
                 'name': name,
-                'quantity': int(quantity),
+                'quantity': quantity,
                 'unit': i['unit'],
                 'unit_price': i['unit_price']
             })
@@ -89,18 +89,19 @@ def sell_items():
     
 def get_costs():
 
-    list_of_quantity = [i['quantity'] * i['unit_price'] for i in list(items) ]
-    print(sum(list_of_quantity))
+    list_of_quantity = [i['quantity'] * int(i['unit_price']) for i in list(items) ]
+    return sum(list_of_quantity)
 
 def get_income():
 
-    list_of_quantity = [int(i['quantity']) * i['unit_price'] for i in list(sold_items) ]
-    print(sum(list_of_quantity))
+    list_of_quantity = [int(i['quantity']) * int(i['unit_price']) for i in list(sold_items) ]
+    return sum(list_of_quantity)
 
 
 def show_revenue():
     print("Revenue breakdown (PLN)")
-    print(f"Income: ")
-    print(f"Costs: ")
+    print(f"Income: {str(get_income())}")
+    print(f"Costs: {str(get_costs())}")
     print("----------")
-    print(f"Revenue")
+    x = get_income() - get_costs()
+    print(f"Revenue {x} PLN")
