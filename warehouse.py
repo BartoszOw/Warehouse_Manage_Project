@@ -26,11 +26,6 @@ items = [{
     'unit_price': 10
 }]
 
-# Sprzedane towary(lista)
-
-sold_items = []
-
-
 
 # Wyswietlanie towaru
 
@@ -65,22 +60,47 @@ def add_items():
     
 # Sprzedaż towaru
 
+sold_items = []
+
+
 def sell_items():
     
     name = input("Item Name: ")
-    quantity = input("Quantity to sell: ")
+    quantity = int(input("Quantity to sell: "))
 
     for i in list(items):
         if i['name'] == name:
-            i['quantity'] -= int(quantity)
-            if i['quantity'] == 0:
+            i['quantity'] = int(i['quantity'])
+            i['quantity'] -= quantity
+            if i['quantity'] <= 0:
                 items.remove(i)
             print(f"Successfully sold {quantity}{i['unit']} of {i['name']}")
             sold_items.append({
                 'name': name,
-                'quantity': quantity,
+                'quantity': int(quantity),
                 'unit': i['unit'],
                 'unit_price': i['unit_price']
             })
     get_items()
     print(sold_items)
+
+
+# Pobieranie kosztów
+    
+def get_costs():
+
+    list_of_quantity = [i['quantity'] * i['unit_price'] for i in list(items) ]
+    print(sum(list_of_quantity))
+
+def get_income():
+
+    list_of_quantity = [int(i['quantity']) * i['unit_price'] for i in list(sold_items) ]
+    print(sum(list_of_quantity))
+
+
+def show_revenue():
+    print("Revenue breakdown (PLN)")
+    print(f"Income: ")
+    print(f"Costs: ")
+    print("----------")
+    print(f"Revenue")
