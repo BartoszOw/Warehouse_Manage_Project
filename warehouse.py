@@ -1,31 +1,6 @@
 
 # Poczatkowa lista towaru
-
-items = [{
-    'name': 'Bułka',
-    'quantity': 5000,
-    'unit': 'kg',
-    'unit_price': 2.5
-}, 
-{
-    'name': 'Chleb',
-    'quantity': 1111,
-    'unit': 'kg',
-    'unit_price': 1
-},
-{
-    'name': 'Mleko',
-    'quantity': 150,
-    'unit': 'l',
-    'unit_price': 4.6
-},
-{
-    'name': 'Kawa',
-    'quantity': 68,
-    'unit': 'kg',
-    'unit_price': 10
-}]
-
+items = []
 
 # Wyswietlanie towaru
 
@@ -89,7 +64,7 @@ def sell_items():
     
 def get_costs():
 
-    costs_of_quantity = [i['quantity'] * float(i['unit_price']) for i in list(items) ]
+    costs_of_quantity = [int(i['quantity']) * float(i['unit_price']) for i in list(items) ]
     return sum(costs_of_quantity)
 
 def get_income():
