@@ -17,7 +17,7 @@ items = [{
     'name': 'Mleko',
     'quantity': 150,
     'unit': 'l',
-    'unit_price': 4
+    'unit_price': 4.6
 },
 {
     'name': 'Kawa',
@@ -51,9 +51,9 @@ def add_items():
     items.append(
     {
         'name': name,
-        'quantity': quantity,
+        'quantity': int(quantity),
         'unit': unit_name,
-        'unit_price': unit_price
+        'unit_price': float(unit_price)
     })
     print("Successfully added to warehouse. Current Status:")
     get_items()
@@ -89,12 +89,12 @@ def sell_items():
     
 def get_costs():
 
-    costs_of_quantity = [i['quantity'] * int(i['unit_price']) for i in list(items) ]
+    costs_of_quantity = [i['quantity'] * float(i['unit_price']) for i in list(items) ]
     return sum(costs_of_quantity)
 
 def get_income():
 
-    income_of_quantity = [int(i['quantity']) * int(i['unit_price']) for i in list(sold_items) ]
+    income_of_quantity = [int(i['quantity']) * float(i['unit_price']) for i in list(sold_items) ]
     return sum(income_of_quantity)
 
 # Pokazywanie kosztów
