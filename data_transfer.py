@@ -18,3 +18,16 @@ def export_sales_to_csv():
         for i in list(sold_items):
             writer.writerow({'name': i['name'],'quantity': i['quantity'],'unit': i['unit'],'unit_price': i['unit_price']})
         
+
+def load_items_from_csv():
+    items.clear()
+    with open('magazyn.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            items.append({
+                'name': row['name'], 
+                'quantity': row['quantity'], 
+                'unit': row['unit'], 
+                'unit_price': row['unit_price']
+                })
+    print("Successfully loaded data from magazyn.csv")
