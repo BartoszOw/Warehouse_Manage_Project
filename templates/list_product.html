@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+        table {
+            margin-top: 10px;
+            width: 100%;
+            height: auto;
+        }
+        thead, tbody {
+            text-align: center;
+        }
+        th, td {
+            padding: 15px;
+            font-size: 1rem;
+            border: 1px solid black;
+        }
+        th {
+            background-color: rgba(139, 139, 139, 0.5);
+        }
+        td:hover {
+            background-color: rgba(216, 216, 216, 0.5);
+        }
+    </style>
+{% endblock style %}
+{% block content %}
+
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Unit price</th>
+        </thead>
+        {% for product in list %}
+        <tbody>
+            <td>{{product.name}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.unit}}</td>
+            <td>{{product.unit_price}}</td>
+            <td style="width: 1%; background-color:rgba(216, 216, 216, 0.5) ;">
+                <button>Usuń</button>
+                <button>Sprzedaj</button>
+            </td>
+        </tbody>
+        {% endfor %}
+    </table>
+
+{% endblock content %}

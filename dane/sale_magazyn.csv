@@ -1,2 +1,4 @@
 name,quantity,unit,unit_price
-Carrot,50,kg,50
+Carrot,100,kg,50
+Carrot,100,kg,10.0
+Kawa,10,kg,10

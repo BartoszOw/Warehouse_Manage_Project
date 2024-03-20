@@ -21,15 +21,13 @@ def export_sales_to_csv():
             writer.writerow({'name': i['name'],'quantity': i['quantity'],'unit': i['unit'],'unit_price': i['unit_price']})
         
 
-def load_items_from_csv(path= 'dane/magazyn.csv'):
-    items.clear()
-    with open(path, newline='') as csvfile:
+def load_items_from_csv(lists):
+    with open('dane/magazyn.csv','r') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            items.append({
+            lists.append({
                 'name': row['name'], 
                 'quantity': row['quantity'], 
                 'unit': row['unit'], 
                 'unit_price': row['unit_price']
                 })
-    print("Successfully loaded data from magazyn.csv")

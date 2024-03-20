@@ -10,7 +10,6 @@ def get_items():
 
     for i in list(items):
         print(f"{i.get('name')}\t{i.get('quantity')}\t\t{i.get('unit')}\t{i.get('unit_price')}")
-    
 
 # Dodawanie Towaru
         
