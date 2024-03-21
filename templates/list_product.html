@@ -1,48 +1,68 @@
 {% extends 'base.html' %}
 {% block style %}
     <style>
+        .info {
+            display: flex;
+            justify-content: space-between;
+            margin: 70px 0 70px 0;
+            width: 70vw;
+        }
         table {
             margin-top: 10px;
-            width: 100%;
+            width: 70vw;
             height: auto;
         }
         thead, tbody {
             text-align: center;
         }
+        tr:nth-child(even) {
+            background-color: rgba(129, 129, 129,0.1);
+        }
         th, td {
             padding: 15px;
-            font-size: 1rem;
-            border: 1px solid black;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(129, 129, 129,0.7);
         }
         th {
-            background-color: rgba(139, 139, 139, 0.5);
-        }
-        td:hover {
-            background-color: rgba(216, 216, 216, 0.5);
+            background-color: rgba(129, 129, 129,0.2);
         }
     </style>
 {% endblock style %}
 {% block content %}
+    <div class="info">
+        <h1>List of Products</h1>
+        <div class="btns"> 
+            <button class="btn btn-light">Load Products</button>
+            <button class="btn btn-light">Export Products</button>
+        </div>
+        
+    </div>
+    
 
     <table>
         <thead>
+            <th style="width: 1%;">#</th>
             <th>Name</th>
             <th>Quantity</th>
             <th>Unit</th>
             <th>Unit price</th>
+            <th></th>
         </thead>
-        {% for product in list %}
+        
         <tbody>
-            <td>{{product.name}}</td>
-            <td>{{product.quantity}}</td>
-            <td>{{product.unit}}</td>
-            <td>{{product.unit_price}}</td>
-            <td style="width: 1%; background-color:rgba(216, 216, 216, 0.5) ;">
-                <button>Usuń</button>
-                <button>Sprzedaj</button>
-            </td>
+            {% for product in list %}
+            <tr>
+                <td></td>
+                <td>{{product.name}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.unit}}</td>
+                <td>{{product.unit_price}}</td>
+                <td></td>
+            </tr>
+            {% endfor %}
         </tbody>
-        {% endfor %}
+       
     </table>
+
 
 {% endblock content %}

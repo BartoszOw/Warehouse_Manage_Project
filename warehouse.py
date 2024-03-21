@@ -1,4 +1,35 @@
+import csv
 
+class Product:
+    def __init__(self, name, quantity, unit, unit_price):
+        self.name = name
+        self.quantity = quantity
+        self.unit = unit
+        self.unit_price = unit_price
+       
+    def __str__(self):
+        return F"Product: {self.name}, Unit: {self.unit}, Unit Price: {self.unit_price}, Quantity: {self.quantity}"
+    
+    def total_price(self):
+        return self.unit_price * self.quantity
+
+    def increase_quantity(self, amount):
+        self.quantity += amount
+
+    def decrease_quantity(self, amount):
+        if self.quantity >= amount:
+            self.quantity -= amount
+        else:
+            print("Error: Not enough quantity available.")
+
+def load_products_from_csv(filename):
+    products = []
+    with open(filename, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            product = Product(row['name'], row['unit'], row['unit_price'], row['quantity'])
+            products.append(product)
+    return products
 # Poczatkowa lista towaru
 items = []
 
