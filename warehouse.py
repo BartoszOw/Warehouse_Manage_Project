@@ -27,9 +27,25 @@ def load_products_from_csv(filename):
     with open(filename, 'r') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            product = Product(row['name'], row['unit'], row['unit_price'], row['quantity'])
+            product = Product(row['name'],row['quantity'], row['unit'], row['unit_price'], )
             products.append(product)
     return products
+
+def export_product_to_csv(items):
+    with open('dane/magazyn.csv', 'w', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=['name', 'quantity', 'unit', 'unit_price'])
+        writer.writeheader()
+        for product in items:
+            writer.writerow({'name': product.name, 'quantity': product.quantity, 'unit': product.unit, 'unit_price': product.unit_price})
+
+
+
+
+
+
+
+
+
 # Poczatkowa lista towaru
 items = []
 

@@ -5,26 +5,7 @@
             display: flex;
             justify-content: space-between;
             margin: 70px 0 70px 0;
-            width: 70vw;
-        }
-        table {
-            margin-top: 10px;
-            width: 70vw;
-            height: auto;
-        }
-        thead, tbody {
-            text-align: center;
-        }
-        tr:nth-child(even) {
-            background-color: rgba(129, 129, 129,0.1);
-        }
-        th, td {
-            padding: 15px;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(129, 129, 129,0.7);
-        }
-        th {
-            background-color: rgba(129, 129, 129,0.2);
+            width: 100%;
         }
     </style>
 {% endblock style %}
@@ -39,9 +20,9 @@
     </div>
     
 
-    <table>
+    <table class="table table-striped">
         <thead>
-            <th style="width: 1%;">#</th>
+            <th style="width: 5%;">#</th>
             <th>Name</th>
             <th>Quantity</th>
             <th>Unit</th>
@@ -57,9 +38,19 @@
                 <td>{{product.quantity}}</td>
                 <td>{{product.unit}}</td>
                 <td>{{product.unit_price}}</td>
-                <td></td>
+                <td><button class="btn-dark">Sell Product</button></td>
             </tr>
             {% endfor %}
+            <tr>
+                <form action="{{url_for('list_products')}}" method="post">
+                    {{product_form.hidden_tag()}}
+                    <td></td>
+                    {% for field in product_form if field.widget.input_type != 'hidden' %}
+                        <td>{{field}}</td>
+                    {% endfor %}
+                    <td><input class="btn-primary" type="submit" value="Add Product" name="btn_add"></td>
+                </form>
+            </tr>
         </tbody>
        
     </table>
