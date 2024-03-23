@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+        .sel_prod {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+    </style>
+{% endblock style %}
+{% block content %}
+    <div class="sel_prod">
+        <h1>How much u wanna sell?</h1>
+        
+    
+
+    <form class="form-group" method="post" action="{{url_for('sell_product', product_name=product_name)}}">
+        {{ form_sell.hidden_tag() }}
+        <table>
+            {% for field in form_sell if field.widget.input_type != 'hidden' %}
+                <tr>
+                    <th>Quantity</th>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="Zmień" class="button">
+    </form>
+    <a href="{{url_for('list_products')}}" class="link">Wróć</a>
+    </div>
+
+{% endblock content %}

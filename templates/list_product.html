@@ -20,25 +20,25 @@
     </div>
     
 
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead>
-            <th style="width: 5%;">#</th>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Unit</th>
-            <th>Unit price</th>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Unit</th>
+            <th scope="col">Unit price</th>
             <th></th>
         </thead>
         
         <tbody>
             {% for product in list %}
             <tr>
-                <td></td>
+                <td scope="row">{{loop.index}}</td>
                 <td>{{product.name}}</td>
                 <td>{{product.quantity}}</td>
                 <td>{{product.unit}}</td>
                 <td>{{product.unit_price}}</td>
-                <td><button class="btn-dark">Sell Product</button></td>
+                <td><a href="/sell/{{product.name}}"><button class=" btn-dark">Sell Product</button></a></td>
             </tr>
             {% endfor %}
             <tr>

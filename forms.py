@@ -7,3 +7,7 @@ class ProductForm(FlaskForm):
     quantity = DecimalField('quantity', validators=[DataRequired()])
     unit = StringField('unit', validators=[DataRequired()])
     unit_price = DecimalField('unit_price', validators=[DataRequired()])
+
+
+class ProductSaleForm(FlaskForm):
+    quantity_sell = DecimalField('quantity', validators=[DataRequired()])
